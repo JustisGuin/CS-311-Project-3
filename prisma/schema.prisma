@@ -1,11 +1,55 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url      = "file:./dev.db" 
+}
+
+model Ingredient {
+  id        Int      @id @default(autoincrement())
+  name      String
+  tags      Tag[]    @relation("IngredientTags")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Tag {
+  id          Int         @id @default(autoincrement())
+  name        String
+  ingredients Ingredient[] @relation("IngredientTags")
+  recipes     Recipe[]     @relation("RecipeTags")
+}
+
+model CookingMethod {
+  id          Int      @id @default(autoincrement())
+  name        String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model CookingStep {
+  id          Int      @id @default(autoincrement())
+  template    String
+  stepOrder   Int      // Field to maintain the order of steps
+  recipe      Recipe?  @relation(fields: [recipeId], references: [id])
+  recipeId    Int?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Recipe {
+  id          Int      @id @default(autoincrement())
+  name        String
+  steps       String      
+  likes       Int      @default(0)
+  tags        Tag[]    @relation("RecipeTags")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  CookingStep CookingStep[]
 }
