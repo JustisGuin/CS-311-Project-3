@@ -19,3 +19,72 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* styles.css */
+
+/* Main container styles */
+.generate-recipe-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000; /* Black background */
+  min-height: 100vh; /* Full height */
+  padding: 1.5rem; /* Padding around the container */
+}
+
+/* Heading styles */
+.generate-recipe-title {
+  font-size: 2rem; /* Font size for the title */
+  font-weight: bold; /* Bold text */
+  color: #fff; /* White text color */
+  margin-bottom: 1.5rem; /* Margin below the title */
+}
+
+/* Button styles */
+.button {
+  padding: 0.5rem 1rem; /* Padding for buttons */
+  border-radius: 0.5rem; /* Rounded corners */
+  transition: background-color 0.3s, transform 0.3s; /* Transition for hover effects */
+}
+
+/* Back button styles */
+.button-back {
+  background-color: #3b82f6; /* Blue background */
+  color: #fff; /* White text */
+}
+
+.button-back:hover {
+  background-color: #2563eb; /* Darker blue on hover */
+}
+
+/* Next button styles */
+.button-next {
+  background-color: #22c55e; /* Green background */
+  color: #fff; /* White text */
+}
+
+.button-next:hover {
+  background-color: #16a34a; /* Darker green on hover */
+}
+
+/* Form styles */
+.form {
+  width: 100%; /* Full width */
+  max-width: 600px; /* Max width for forms */
+  background-color: #1f1f1f; /* Darker background for forms */
+  padding: 1.5rem; /* Padding inside forms */
+  border-radius: 0.5rem; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .generate-recipe-title {
+    font-size: 1.5rem; /* Smaller font size on mobile */
+  }
+
+  .button {
+    width: 100%; /* Full width buttons on mobile */
+  }
+}

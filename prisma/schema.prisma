@@ -1,14 +1,13 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./dev.db" 
+  url      = env("DATABASE_URL")
 }
 
 model Ingredient {
@@ -21,7 +20,7 @@ model Ingredient {
 
 model Tag {
   id          Int         @id @default(autoincrement())
-  name        String
+  name        String      @unique // Make name unique
   ingredients Ingredient[] @relation("IngredientTags")
   recipes     Recipe[]     @relation("RecipeTags")
 }
